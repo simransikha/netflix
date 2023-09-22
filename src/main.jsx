@@ -11,6 +11,8 @@ import Signup from './pages/Signup.jsx'
 import Netflix from './pages/Netflix.jsx'
 import Navbar from './components/Navbar.jsx'
 import Header from './components/Header.jsx'
+import { AuthContextProvider } from './components/context/AuthContext.jsx'
+import Account from './pages/Account.jsx'
 
 
 
@@ -27,15 +29,22 @@ const router = createBrowserRouter([
     path: "/",
     element: <Netflix />,
   },
- 
+  {
+    path: "/account",
+    element: <Account/>
+  },
  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
-    <Navbar/>
+  <AuthContextProvider>
+  <Navbar/>
   
-     <RouterProvider router={router} />
+  <RouterProvider router={router} />
+
+  </AuthContextProvider>
+   
    
   </>
 );

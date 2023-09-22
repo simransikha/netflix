@@ -9,8 +9,16 @@ const Header = () => {
      setMovies(response.data.results)
     })
     },[])
-    console.log(movie)
-  return (
+    //console.log(movie)
+   const truncating = (str, num) =>{
+    if(str?.length > num) {
+      return str.slice(0,num) + '...'
+    }
+    else {
+      return str
+    }
+   }
+    return (
       <div className='w-full h-[550px] text-white'>
         <div className='w-full h-full'>
          <div className='absolute w-full h-[550px] bg-gradient-to-r from-black'></div>
@@ -22,7 +30,7 @@ const Header = () => {
           <button className='border text-white ml-4 border-gray-300 py-2 px-5'>Watch Later </button>
          </div>
          <p className='text-gray-400 text-sm'>Released: {movie?.release_date}</p>
-         <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>{movie?.overview}</p>
+         <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>{truncating(movie?.overview,150)}</p>
          </div>
         </div>
         </div> 
