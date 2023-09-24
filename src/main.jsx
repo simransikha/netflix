@@ -1,4 +1,4 @@
-import   {React} from 'react'
+import   {React, StrictMode} from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -33,13 +33,17 @@ const router = createBrowserRouter([
     path: "/account",
     element: <Account/>
   },
- 
+  {
+    path: "*",
+    element: <Navbar/>
+  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
   <AuthContextProvider>
-  <Navbar/>
+  <App/>
   
   <RouterProvider router={router} />
 

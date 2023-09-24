@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import bg from './bg.jpeg';
 import { UserAuth } from '../components/context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 const Signup = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
  
-  const {user,signUp} = UserAuth()
+  const {user,signUp} = UserAuth();
+  const navigate = useNavigate()
   const handleSubmit = async(e) => {
 
     e.preventDefault()
     try {
       await signUp(email,password)
+      navigate('/')
     } catch (error) {
       console.log(error)
       
@@ -30,7 +32,9 @@ const Signup = () => {
       <input 
       onChange={(e) => setEmail(e.target.value)}
       className='p-3 my-2 bg-gray-700 rounded' type="email" placeholder='Email' autoComplete='email'/>
-      <input className='p-3 my-2 bg-gray-700 rounded' type="password" placeholder='Password'
+      <input
+      onChange={(e) => setPassword(e.target.value)}
+      className='p-3 my-2 bg-gray-700 rounded' type="password" placeholder='Password'
       autoComplete='current-password' />
       <button className='bg-red-600 py-3 my-6 rounded font-bold'>Sign Up</button>
      <div className='flex justify-between items-center text-sm text-gray-600'>
