@@ -33,17 +33,12 @@ const router = createBrowserRouter([
     path: "/account",
     element: <Account/>
   },
-  {
-    path: "*",
-    element: <Navbar/>
-  },
 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
   <AuthContextProvider>
-  <App/>
   
   <RouterProvider router={router} />
 

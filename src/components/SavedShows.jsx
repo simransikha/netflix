@@ -8,7 +8,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 const SavedShows = () => {
   const [movies, setMovies] = useState([]);
   const { user } = UserAuth();
-
+  console.log(movies)
   const slideLeft = () => {
     var slider = document.getElementById('slider');
     slider.scrollLeft = slider.scrollLeft - 500;
@@ -20,7 +20,7 @@ const SavedShows = () => {
 
   useEffect(() => {
     onSnapshot(doc(db, 'users', `${user?.email}`), (doc) => {
-      setMovies(doc.data()?.savedShows);
+      setMovies(doc.data()?.savedShow);
     });
   }, [user?.email]);
 
@@ -39,7 +39,7 @@ const SavedShows = () => {
   return (
     <>
       <h2 className='text-white font-bold md:text-xl p-4'>My Shows</h2>
-      <div className='relative flex items-center group'>
+      <div className='relative flex  mt-80 items-center group'>
         <MdChevronLeft
           onClick={slideLeft}
           className='bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block'

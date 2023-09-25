@@ -2,10 +2,11 @@ import React from 'react'
 import request from '../request'
 import Header from '../components/Header'
 import Row from '../components/Row'
-
+import Navbar from '../components/Navbar'
 const Netflix = () => {
   return (
     <div>
+      <Navbar />
     <Header/>
     <Row rowId='1' title='Up Coming' fetchURL={request.requestUpcoming}/>
     <Row  rowId='2' title='Trending' fetchURL={request.requestTrending}/>
